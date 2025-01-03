@@ -13,6 +13,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private float cellSize;
     [SerializeField] private Vector3 originPosition;
     [SerializeField] private Gem[] gems;
+
     
     private GridSystem2D<GridObject<Gem>> grid;
 
@@ -29,6 +30,8 @@ public class GridManager : MonoBehaviour
             gem.PlayExplosionEffect();
             
             gem.SetSpriteDisable();
+            
+            gem.SetHiglight(false);
             
             float delay = gem.GetExplosionDuration();
             

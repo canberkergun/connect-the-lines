@@ -6,6 +6,7 @@ public class Gem : MonoBehaviour
     [SerializeField] private GemType gemType;
     [SerializeField] private ParticleSystem explosionEffect;
     [SerializeField] private SpriteRenderer renderer;
+    [SerializeField] private GameObject highlight;
     public GemType GemType => gemType;
     public int X { get; set; }
     public int Y { get; set; }
@@ -25,7 +26,6 @@ public class Gem : MonoBehaviour
         {
             return explosionEffect.main.duration;
         }
-
         return 0f; // Default if no particle system
     }
 
@@ -33,6 +33,12 @@ public class Gem : MonoBehaviour
     {
         renderer.enabled = false;
     }
+
+    public void SetHiglight(bool state)
+    {
+        highlight.SetActive(state);
+    }
+
 }
 
 public enum GemType

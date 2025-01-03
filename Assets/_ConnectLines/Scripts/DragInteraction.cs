@@ -95,7 +95,7 @@ public class DragInteraction : MonoBehaviour
         {
             gridManager.DestroyGems(selectedGems);
         }
-        selectedGems[0].transform.GetChild(0).gameObject.SetActive(false);
+        selectedGems[0].SetHiglight(false);
         selectedGems.Clear();
         isDragging = false;
         currentGemType = null;
@@ -123,14 +123,14 @@ public class DragInteraction : MonoBehaviour
 
     bool IsAdjacent(Gem a, Gem b)
     {
-        return Mathf.Abs(a.X - b.X) <= 1 && Mathf.Abs(a.Y - b.Y) <= 1;
+        return (Mathf.Abs(a.X - b.X) == 1 && Mathf.Abs(a.Y - b.Y) == 0) || (Mathf.Abs(a.X - b.X) == 0 && Mathf.Abs(a.Y - b.Y) == 1);
     }
 
     void AddGem(Gem gem)
     {
         selectedGems.Add(gem);
         
-        gem.transform.GetChild(0).gameObject.SetActive(true);
+        gem.SetHiglight(true);
         
         Vector3 gemPosition = gem.transform.position;
 
