@@ -17,7 +17,8 @@ public class DragInteraction : MonoBehaviour
 
     [SerializeField] private LayerMask gemLayer;
     [SerializeField] private GridManager gridManager;
-
+    
+    
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -94,6 +95,7 @@ public class DragInteraction : MonoBehaviour
         if (selectedGems.Count > 1)
         {
             gridManager.DestroyGems(selectedGems);
+            GameManager.Instance.UseMove();
         }
         selectedGems[0].SetHiglight(false);
         selectedGems.Clear();

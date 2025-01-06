@@ -28,6 +28,15 @@ public class GridManager : MonoBehaviour
         foreach (Gem gem in gemsToDestroy)
         {
             gem.PlayExplosionEffect();
+
+            foreach (PopGemsCondition condition in GameManager.Instance.GetCurrentConditions())
+            {
+                if (condition.gemType == gem.GemType)
+                {
+                    condition.IncrementCount(gem.GemType);
+                    GameManager.Instance.NotifyConditionProgress(condition);
+                }
+            }
             
             gem.SetSpriteDisable();
             

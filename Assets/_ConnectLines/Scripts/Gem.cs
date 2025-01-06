@@ -15,7 +15,6 @@ public class Gem : MonoBehaviour
     {
         if (explosionEffect != null)
         {
-            Debug.Log("Playing particle system: " + explosionEffect.name);
             explosionEffect.Play();
         }
     }
